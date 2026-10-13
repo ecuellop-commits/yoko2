@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#8981f2">
+  <title>Para Dani</title>
+  <style>
+    :root {
+      color-scheme: light;
+      font-family: Georgia, "Times New Roman", serif;
+      color: #211d36;
+      background: #8981f2;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      min-height: 100svh;
+      margin: 0;
+      background: #8981f2 url("yoko.jpg") center center / auto 100svh no-repeat;
+    }
+
+    .decorations {
+      position: fixed;
+      z-index: 0;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .decoration {
+      position: absolute;
+      display: block;
+      animation: float 5s ease-in-out infinite;
+      user-select: none;
+    }
+
+    .flower {
+      font: 30px/1 "Segoe UI Emoji", sans-serif;
+      filter: drop-shadow(0 3px 4px rgba(54, 35, 91, 0.2));
+    }
+
+    .heart {
+      color: #ed416b;
+      font: 25px/1 Georgia, serif;
+      text-shadow: 0 2px 5px rgba(104, 30, 83, 0.25);
+      animation-name: pulse;
+      animation-duration: 2.4s;
+    }
+
+    .flower-one { top: 12%; left: 7%; }
+    .flower-two { top: 39%; left: 4%; font-size: 24px; animation-delay: -1.5s; }
+    .flower-three { right: 8%; bottom: 12%; font-size: 27px; animation-delay: -2.5s; }
+    .flower-four { top: 17%; right: 8%; font-size: 22px; animation-delay: -0.8s; }
+    .heart-one { top: 27%; left: 34%; }
+    .heart-two { top: 57%; right: 10%; font-size: 19px; animation-delay: -1s; }
+    .heart-three { bottom: 18%; left: 31%; font-size: 18px; animation-delay: -2s; }
+
+    main {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      min-height: 100svh;
+      align-items: flex-start;
+      padding: clamp(28px, 7vh, 72px) clamp(24px, 8vw, 120px);
+    }
+
+    .message {
+      width: min(100%, 350px);
+      animation: arrive 700ms ease-out both;
+    }
+
+    .eyebrow {
+      margin: 0 0 15px;
+      color: #3f357b;
+      font: 700 12px/1.4 "Trebuchet MS", sans-serif;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(42px, 6vw, 66px);
+      font-weight: 400;
+      line-height: 0.98;
+    }
+
+    .intro {
+      max-width: 310px;
+      margin: 18px 0 23px;
+      font: 16px/1.6 "Trebuchet MS", sans-serif;
+    }
+
+    button {
+      min-height: 46px;
+      padding: 0 19px;
+      border: 1px solid #29213f;
+      border-radius: 3px;
+      background: #29213f;
+      color: #fff;
+      font: 600 14px "Trebuchet MS", sans-serif;
+      cursor: pointer;
+      transition: background 160ms ease, color 160ms ease, transform 160ms ease;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      background: transparent;
+      color: #211d36;
+    }
+
+    button:focus-visible, dialog button:focus-visible {
+      outline: 3px solid #fff;
+      outline-offset: 3px;
+    }
+
+    dialog {
+      width: min(620px, calc(100% - 36px));
+      max-height: 90svh;
+      overflow-y: auto;
+      padding: 34px;
+      border: 1px solid rgba(41, 33, 63, 0.2);
+      border-radius: 5px;
+      background: #fffaf5;
+      color: #211d36;
+      box-shadow: 0 24px 80px rgba(30, 22, 65, 0.25);
+    }
+
+    dialog::backdrop { background: rgba(34, 27, 67, 0.48); }
+
+    dialog h2 {
+      margin: 0 0 14px;
+      font-size: 32px;
+      font-weight: 400;
+    }
+
+    #letter {
+      width: min(680px, calc(100% - 36px));
+    }
+
+    .letter-content p {
+      margin: 0 0 16px;
+      font: 15px/1.8 "Trebuchet MS", sans-serif;
+    }
+
+    dialog p {
+      margin: 0 0 22px;
+      font: 16px/1.7 "Trebuchet MS", sans-serif;
+    }
+
+    dialog video {
+      display: block;
+      width: 100%;
+      max-height: 55svh;
+      margin: 18px 0;
+      background: #211d36;
+    }
+
+    [hidden] { display: none !important; }
+
+    dialog button { background: #29213f; color: #fff; }
+
+    @keyframes arrive {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(-7deg); }
+      50% { transform: translateY(-8px) rotate(7deg); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.18); }
+    }
+
+    @media (max-width: 600px) {
+      body { background-position: center calc(50% + 100px); }
+      main { padding: 34px 25px; }
+      .message { width: 100%; }
+      h1 { font-size: 48px; }
+      .intro { max-width: 275px; font-size: 14px; }
+      .flower-one { top: 10%; right: 7%; left: auto; }
+      .flower-two { top: 42%; left: 4%; }
+      .flower-three { right: auto; bottom: 5%; left: 8%; }
+      .flower-four { top: auto; right: 7%; bottom: 6%; }
+      .heart-one { top: 21%; right: 7%; left: auto; }
+      .heart-two { top: 58%; right: 4%; }
+      .heart-three { right: 3%; bottom: 18%; left: auto; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="decorations" aria-hidden="true">
+    <span class="decoration flower flower-one">🌸</span>
+    <span class="decoration flower flower-two">🌼</span>
+    <span class="decoration flower flower-three">🌷</span>
+    <span class="decoration flower flower-four">🌺</span>
+    <span class="decoration heart heart-one">♥</span>
+    <span class="decoration heart heart-two">♥</span>
+    <span class="decoration heart heart-three">♥</span>
+  </div>
+  <main>
+    <section class="message" aria-labelledby="title">
+      <p class="eyebrow">Un detalle para ti</p>
+      <h1 id="title">Para<br>Dani</h1>
+      <p class="intro">Hay personas que hacen que todo se sienta un poquito más bonito. Tú eres esa persona.</p>
+      <button id="open-note" type="button">Leer mi mensaje</button>
+    </section>
+  </main>
+
+  <dialog id="note" aria-labelledby="note-title">
+    <h2 id="note-title">Con mucho cariño</h2>
+    <p>Solo quería recordarte lo especial que eres y mandarte un poquito de alegría, hoy y siempre. 💚</p>
+    <button id="show-video" type="button">Ver video</button>
+    <video id="video" controls playsinline preload="metadata" aria-label="Video de Snoopy" hidden>
+      <source src="SNOOPY.mp4" type="video/mp4">
+      Tu navegador no puede reproducir este video.
+    </video>
+    <button id="close-note" type="button">Cerrar</button>
+  </dialog>
+
+  <dialog id="letter" aria-labelledby="letter-title">
+    <h2 id="letter-title" tabindex="-1">Una carta para ti</h2>
+    <div class="letter-content">
+      <p>Sé que no llevamos mucho tiempo de habernos conocido,y podrás decir bueno este loquito por qué se comporta así conmigo, por qué me dice todo esto por qué hace todo esto, y la respuesta es que este loquito quiere algo verdadero, quiere estar con usted, quiere ser feliz, este loquito no tiene miedo ni pena de demostrarle todo lo que él es capaz de hacer por usted, lo único es que debes querer que yo lo demuestre, por qué no puedo hacer cosas si te sentirás incómoda, yo te respeto y siempre lo haré entonces aveces pienso en lo que digo en lo que hago para no cagarlas,</p>
+      <p>ayer planee cosas en mi mente d e que decirte de que hacer pero sinceramente cuando llegue todo en mi mente de borro, todo se perdió y sinceramente fui lindo por que literalmente nada fue planeado, ese abrazo fuerte, esa sonrisa, esos ojos, créame que quiero valorarla, y que usted se dé cuente y vea con sus ojos lo que este niño lleno de amor está dispuesto a dar por usted.</p>
+      <p>No soy malo, puede que no sea perfecto en nada pero siempre trato de ser buen hijo, bien hermano, buen amigo incluso quiero llegar a ser un buen novio, me alegra ayudar a las personas y créame que eso me llena más que cualquier cosa material.</p>
+      <p>No sé cómo describir lo que siento, escribo cartas y cosas en las notas de mi celular hacia ti. Y eso que no llevamos mucho aunque ya nos hayamos visto antes. Y es raro por qué hace un tiempo antes de conocerte y todo eso no hacía nada de eso y dije que no quería volverlo a hacer pero simplemente esta vez no estoy mandando yo si no mi corazón nisiquiera el miedo es tan grande como lo que mi corazón está sintiendo, puedo seguir escribiendo 20 libros más, pero espero que tú puedas hacer más de 20 libros juntos con todo lo que yo te escribiré todo el tiempo.</p>
+    </div>
+    <form method="dialog"><button type="submit">Cerrar carta</button></form>
+  </dialog>
+
+  <script>
+    const note = document.querySelector("#note");
+    const video = document.querySelector("#video");
+    const letter = document.querySelector("#letter");
+    let showLetterAfterClose = false;
+
+    document.querySelector("#open-note").addEventListener("click", () => note.showModal());
+    document.querySelector("#show-video").addEventListener("click", () => {
+      video.hidden = false;
+      video.play().catch(() => {});
+    });
+    document.querySelector("#close-note").addEventListener("click", () => {
+      showLetterAfterClose = !video.hidden;
+      note.close();
+    });
+    note.addEventListener("close", () => {
+      video.pause();
+      video.currentTime = 0;
+      video.hidden = true;
+
+      if (showLetterAfterClose) {
+        showLetterAfterClose = false;
+        letter.showModal();
+        document.querySelector("#letter-title").focus();
+      }
+    });
+  </script>
+</body>
+</html>
